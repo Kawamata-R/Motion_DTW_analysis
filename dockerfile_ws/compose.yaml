@@ -1,0 +1,15 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./dockerfile
+    image: dtw_v1
+    container_name: dtw_con_v1
+    volumes:
+      - /mnt/wslg:/mnt/wslg
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      - DISPLAY=$DISPLAY
+      - PULSE_SERVER=$PULSE_SERVER
+      - WAYLAND_DISPLAY=$WAYLAND_DISPLAY
+      - XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR

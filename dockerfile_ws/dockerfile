@@ -1,0 +1,36 @@
+FROM ubuntu:22.04
+
+ENV HOME /root
+ENV DISPLAY=:0 
+
+# タイムゾーン
+RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
+# apt
+RUN apt update && apt-get install -y x11-apps
+RUN apt upgrade -y
+RUN apt install -y libopencv-dev
+RUN apt install sudo
+RUN apt install curl
+RUN apt install sudo
+RUN sudo apt install vim -y
+RUN sudo apt update -y
+
+# install python and pip
+RUN sudo apt install -y python3 python3-pip python3-tk
+RUN sudo python3 -m pip install --upgrade pip
+#RUN curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
+#RUN sudo python get-pip.py
+#RUN sudo python get-pip.py
+#RUN sudo pip install --upgrade pip --break-system-packages
+
+# set working directory and copy files
+#WORKDIR /usr/dtw_ws
+#COPY ./ /usr/src/app
+
+# install pip tools
+RUN sudo pip install numpy
+RUN sudo pip install numpy-quaternion
+RUN sudo pip install scipy
+RUN sudo pip install fastdtw
+RUN sudo pip install matplotlib
